@@ -5,8 +5,8 @@ from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from .models import meeting,ugSenator,pgSenator,facultyExecutivebodie,studentExecutivebodie,upcomingEvent
-from .serializers import meetingSerializer,ugSenatorSerializer,pgSenatorSerializer,facultyExcecutiveSerializer,studentExcecutiveSerializer,upComingSerializer
+from .models import meeting,ugSenator,pgSenator,facultyExecutivebodie,studentExecutivebodie,upcomingEvent, upcomingEventlead
+from .serializers import meetingSerializer,ugSenatorSerializer,pgSenatorSerializer,facultyExcecutiveSerializer,studentExcecutiveSerializer,upComingSerializer, upComingleadSerializer
 from rest_framework.decorators import api_view
 # Create your views here.
 
@@ -15,7 +15,9 @@ from rest_framework.decorators import api_view
 def home(request):
     response= requests.get('http://127.0.0.1:8001/faculty/?format=json').json()
     response1 =requests.get('http://127.0.0.1:8001/student/?format=json').json()
-    return render(request,'main/home.html',{'response':response,'response1':response1})
+    res1=requests.get('http://127.0.0.1:8001/upcomingevents/?format=json').json()
+    lead=requests.get('http://127.0.0.1:8001/upcomingeventslead/?format=json').json()
+    return render(request,'main/home.html',{'response':response,'response1':response1,'res1':res1,'lead':lead})
     
 
 
@@ -68,3 +70,8 @@ def getupComing(request):
         serializer=upComingSerializer(upComings, many=True)
         return Response(serializer.data)
 
+@api_view(["GET"])
+def getupCominglead(request):
+        upComings=upcomingEventlead.objects.all()
+        serializer=upComingleadSerializer(upComings, many=True)
+        return Response(serializer.data)

@@ -7,6 +7,7 @@ urlpatterns = [
     path('faculty/', views.getfacultyExecutivebodie),
     path('student/', views.getstudentExecutivebodie),
     path('upcomingevents/', views.getupComing),
+    path('upcomingeventslead/', views.getupCominglead),
     path('', views.home, name = 'home-page'),
     path('senate/',views.Senate,name='senate-page'),
     path('minutes/',views.minutes,name='minutes-page'),

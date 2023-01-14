@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import meeting,ugSenator,pgSenator,facultyExecutivebodie,studentExecutivebodie,upcomingEvent
+from .models import meeting,ugSenator,pgSenator,facultyExecutivebodie,studentExecutivebodie,upcomingEvent, upcomingEventlead
 class meetingSerializer(serializers.ModelSerializer):
    class Meta:
       model= meeting
@@ -28,4 +28,9 @@ class studentExcecutiveSerializer(serializers.ModelSerializer):
 class upComingSerializer(serializers.ModelSerializer):
    class Meta:
       model= upcomingEvent
+      fields='__all__'
+
+class upComingleadSerializer(serializers.ModelSerializer):
+   class Meta:
+      model= upcomingEventlead
       fields='__all__'

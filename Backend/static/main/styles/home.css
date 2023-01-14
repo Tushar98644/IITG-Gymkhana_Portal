@@ -58,12 +58,19 @@
 .bottomtext{
     display: flex; justify-content:space-between
 }
-
+.CardDesc{
+    color:white;font-size: 32px;position: relative; bottom: 2vw; font-family: 'Raleway';
+                                    font-style: normal;
+                                    font-weight: 500;
+}
 
 @media (max-width:1000px){
     .aboutImage{transform: scale(.7);
     position: relative;
 left: 50px;}
+.CardDesc{
+    font-size: 16px;
+}
 }
 
 @media (max-width:700px){
@@ -124,7 +131,9 @@ left: 50px;}
         position: relative;
         left: 0px;
     }
-
+    .CardDesc{
+        font-size: 13px;
+    }
  .aboutHead{
     width: 35vh;
  }
@@ -138,5 +147,8 @@ left: 50px;}
         transform: scale(.5);
         position: relative;
         left: -40px;
+    }
+    .CardDesc{
+        font-size: 11px;
     }
 }
